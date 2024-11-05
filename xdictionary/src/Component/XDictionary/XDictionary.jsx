@@ -5,16 +5,15 @@ import { data } from "../../WordData.js";
 const XDictionary = () => {
   const inputRef = useRef();
   const [search, setSearch] = useState("");
-  const [filterData, setFilterData] = useState("");
+  const [filterData, setFilterData] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const filter = data.find((item) =>
-      item.word.toLowerCase().includes(search)
-    );
+    const filter = data.find((item) => item.word.toLowerCase() === search);
     if (filter) {
       setFilterData(filter.meaning);
     } else {
-      setFilterData("Word not found in the dictionary.");
+      setFilterData(`Word not found in the dictionary.`);
     }
   };
   useEffect(() => {
@@ -26,7 +25,7 @@ const XDictionary = () => {
   return (
     <div className={Styles.card}>
       <h1 className={Styles.heading}>Dictionary App</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           className={Styles.input}
           type="text"
@@ -34,7 +33,9 @@ const XDictionary = () => {
           ref={inputRef}
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
         />
-        <button type="submit" className={Styles.button} onClick={handleSubmit}>Search</button>
+        <button type="submit" className={Styles.button} onClick={handleSubmit}>
+          Search
+        </button>
       </form>
       {filterData && (
         <div className={Styles.result}>
