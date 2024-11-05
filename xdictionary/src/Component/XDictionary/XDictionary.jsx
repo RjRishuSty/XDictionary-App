@@ -1,4 +1,3 @@
-// src/Component/XDictionary.jsx
 import React, { useEffect, useRef, useState } from "react";
 import Styles from "./XDictionary.module.css";
 import { data } from "../WordData.js";
@@ -34,18 +33,16 @@ const XDictionary = () => {
   return (
     <div className={Styles.card}>
       <h1 className={Styles.heading}>Dictionary App</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          className={Styles.input}
-          type="text"
-          placeholder="Search for a word"
-          ref={inputRef}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button type="submit" className={Styles.button}>
-          Search
-        </button>
-      </form>
+      <input
+        className={Styles.input}
+        type="text"
+        placeholder="Search for a word"
+        ref={inputRef}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <button type="button" className={Styles.button} onClick={handleSubmit}>
+        Search
+      </button>
       {filterData && (
         <div className={Styles.result}>
           <p>
