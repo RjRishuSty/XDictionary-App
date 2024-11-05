@@ -34,7 +34,7 @@ const XDictionary = () => {
           ref={inputRef}
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
         />
-        <button className={Styles.button}>Search</button>
+        <button type="submit" className={Styles.button} onClick={handleSubmit}>Search</button>
       </form>
       {filterData && (
         <div className={Styles.result}>
