@@ -1,39 +1,48 @@
+// src/Component/XDictionary.jsx
 import React, { useEffect, useRef, useState } from "react";
 import Styles from "./XDictionary.module.css";
-import { data } from "../../WordData.js";
+import { data } from "../WordData.js";
 
 const XDictionary = () => {
   const inputRef = useRef();
   const [search, setSearch] = useState("");
-  const [filterData, setFilterData] = useState(null);
+  const [filterData, setFilterData] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const filter = data.find((item) => item.word.toLowerCase() === search);
+    if (search.trim() === "") {
+      setFilterData("Word not found in the dictionary.");
+      return;
+    }
+
+    const filter = data.find(
+      (item) => item.word.toLowerCase() === search.toLowerCase()
+    );
     if (filter) {
       setFilterData(filter.meaning);
     } else {
-      setFilterData(`Word not found in the dictionary.`);
+      setFilterData("Word not found in the dictionary.");
     }
   };
+
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
-  //   console.log("search", search);
+
   return (
     <div className={Styles.card}>
       <h1 className={Styles.heading}>Dictionary App</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           className={Styles.input}
           type="text"
           placeholder="Search for a word"
           ref={inputRef}
-          onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <button type="submit" className={Styles.button} onClick={handleSubmit}>
+        <button type="submit" className={Styles.button}>
           Search
         </button>
       </form>
