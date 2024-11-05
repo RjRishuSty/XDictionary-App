@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Styles from "./XDictionary.module.css";
-import { data } from "../WordData.js";
+import { data } from "../../WordData.js";
 
 const XDictionary = () => {
   const inputRef = useRef();
