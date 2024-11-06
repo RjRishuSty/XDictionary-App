@@ -36,12 +36,11 @@ const XDictionary = () => {
           Search
         </button>
       </div>
-      {filterData && (
-        <div className={Styles.result}>
-          <div>Definition:</div>
-          <p>{filterData}</p>
-        </div>
-      )}
+
+      <div className={Styles.result}>
+        <div>Definition:</div>
+        {filterData && <p>{filterData}</p>}
+      </div>
     </div>
   );
 };
