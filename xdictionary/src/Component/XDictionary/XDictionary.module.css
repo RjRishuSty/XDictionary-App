@@ -61,9 +61,12 @@
   height: auto;
   padding: 10px 5px;
   margin-top: 20px;
-  display: flex;
+  /* display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: center; */
+}
+.result p{
+  margin-bottom: 10px;
 }
 @media (max-width: 1250px) {
   .input {
