@@ -38,9 +38,7 @@ const XDictionary = () => {
       </div>
       {filterData && (
         <div className={Styles.result}>
-          <p>
-            <strong>Definition: </strong>
-          </p>
+          <div>Definition:</div>
           <p>{filterData}</p>
         </div>
       )}
